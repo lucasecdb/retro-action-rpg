@@ -24,17 +24,19 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	facing_direction = input_vector
 
 	if facing_direction.x != 0.0:
 		flip_anchor.scale.x = sign(facing_direction.x)
 
 	if input_vector != Vector2.ZERO:
 		play_animation("run")
+		CharacterMover.accelerate_in_direction(self, input_vector, movement_stats, delta)
 	else:
 		play_animation("idle")
-	facing_direction = input_vector
-	velocity = input_vector * 100
-	move_and_slide()
+		CharacterMover.decelerate(self, movement_stats, delta)
+
+	CharacterMover.move(self)
 
 func play_animation(animation: String) -> void:
 	var animation_name := animation + "_" + get_direction_string()
