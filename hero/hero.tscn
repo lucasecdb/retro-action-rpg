@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkyp2aya3fxmw"]
+[gd_scene load_steps=12 format=3 uid="uid://bkyp2aya3fxmw"]
 
 [ext_resource type="Texture2D" uid="uid://w3r2is8u33i8" path="res://hero/fox_hero.png" id="1_jvt1n"]
 [ext_resource type="Script" path="res://hero/hero.gd" id="1_nv1k5"]
+[ext_resource type="Resource" uid="uid://c8u0ihwtn5aw4" path="res://hero/basic_hero_movement_stats.tres" id="2_52ml7"]
 
 [sub_resource type="Animation" id="Animation_3xmcn"]
 resource_name = "idle_down"
@@ -10,7 +11,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +26,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +43,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +60,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +77,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,7 +94,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -110,7 +111,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -133,8 +134,11 @@ _data = {
 
 [node name="Hero" type="CharacterBody2D"]
 script = ExtResource("1_nv1k5")
+movement_stats = ExtResource("2_52ml7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="FlipAnchor" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="FlipAnchor"]
 texture = ExtResource("1_jvt1n")
 offset = Vector2(0, -9)
 hframes = 48

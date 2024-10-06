@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MovementStats" load_steps=2 format=3 uid="uid://c8u0ihwtn5aw4"]
+
+[ext_resource type="Script" path="res://character_systems/movement_stats.gd" id="1_lrt63"]
+
+[resource]
+script = ExtResource("1_lrt63")
+max_speed = 80.0
+acceleration = 1000.0
+friction = 1000.0

@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 const SIDE_BIAS := 0.1
 
+@export var movement_stats: MovementStats
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var flip_anchor: Node2D = $FlipAnchor
 
 var facing_direction: Vector2 = Vector2.DOWN :
 	set(value):
@@ -21,6 +24,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
+	if facing_direction.x != 0.0:
+		flip_anchor.scale.x = sign(facing_direction.x)
+
 	if input_vector != Vector2.ZERO:
 		play_animation("run")
 	else:
