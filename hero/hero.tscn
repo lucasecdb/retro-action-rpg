@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkyp2aya3fxmw"]
+[gd_scene load_steps=16 format=3 uid="uid://bkyp2aya3fxmw"]
 
 [ext_resource type="Texture2D" uid="uid://w3r2is8u33i8" path="res://hero/fox_hero.png" id="1_jvt1n"]
 [ext_resource type="Script" path="res://hero/hero.gd" id="1_nv1k5"]
 [ext_resource type="Resource" uid="uid://c8u0ihwtn5aw4" path="res://hero/basic_hero_movement_stats.tres" id="2_52ml7"]
+[ext_resource type="Resource" uid="uid://bswht2m4uvs8y" path="res://hero/roll_hero_movement_stats.tres" id="3_uy478"]
 
 [sub_resource type="Animation" id="Animation_3xmcn"]
 resource_name = "idle_down"
@@ -121,12 +122,66 @@ tracks/0/keys = {
 "values": [15, 16, 17, 18, 19, 20]
 }
 
+[sub_resource type="Animation" id="Animation_7ojlr"]
+resource_name = "roll_down"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_lxewl"]
+resource_name = "roll_side"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [38, 39, 40, 41, 42]
+}
+
+[sub_resource type="Animation" id="Animation_62le2"]
+resource_name = "roll_up"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [43, 44, 45, 46, 47]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y231p"]
 _data = {
 "RESET": SubResource("Animation_xueem"),
 "idle_down": SubResource("Animation_3xmcn"),
 "idle_side": SubResource("Animation_n2e4v"),
 "idle_up": SubResource("Animation_syjei"),
+"roll_down": SubResource("Animation_7ojlr"),
+"roll_side": SubResource("Animation_lxewl"),
+"roll_up": SubResource("Animation_62le2"),
 "run_down": SubResource("Animation_bjb1t"),
 "run_side": SubResource("Animation_c3if1"),
 "run_up": SubResource("Animation_hn2r5")
@@ -135,6 +190,7 @@ _data = {
 [node name="Hero" type="CharacterBody2D"]
 script = ExtResource("1_nv1k5")
 movement_stats = ExtResource("2_52ml7")
+roll_movement_stats = ExtResource("3_uy478")
 
 [node name="FlipAnchor" type="Node2D" parent="."]
 

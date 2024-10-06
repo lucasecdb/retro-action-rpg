@@ -1,12 +1,15 @@
 class_name HeroMoveState
 extends State
 
+signal roll
+
 
 func physics_process(delta: float) -> void:
 	var hero := actor as Hero
 
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	hero.facing_direction = input_vector
+	hero.direction = input_vector
 
 	if hero.facing_direction.x != 0.0:
 		hero.flip_anchor.scale.x = sign(hero.facing_direction.x)
@@ -19,3 +22,6 @@ func physics_process(delta: float) -> void:
 		CharacterMover.decelerate(hero, hero.movement_stats, delta)
 
 	CharacterMover.move(hero)
+
+	if Input.is_action_just_pressed("ui_accept"):
+		roll.emit()
