@@ -50,12 +50,12 @@ func play_animation(animation: String) -> void:
 
 
 func get_direction_string() -> String:
-	var direction := ""
+	var new_direction := ""
 	if facing_direction.x == 0.0:
 		if facing_direction.y < 0.0:
-			direction = "up"
+			new_direction = "up"
 		else:
-			direction = "down"
+			new_direction = "down"
 	else:
-		direction = "side"
-	return direction
+		new_direction = "side"
+	return new_direction
